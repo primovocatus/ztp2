@@ -2,22 +2,21 @@
 <html>
 <head><meta charset="utf-8"><title>ztp2</title></head>
 <body>
-  <video id="video" controls crossorigin="anonymous" style="width:900px;max-width:100%;"></video>
-
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.4.0"></script>
-  <script>
-    const video = document.getElementById('video');
-    const url  = 'https://45.80.231.126/hls/video1/playlist.m3u8';
-
-    if (video.canPlayType('application/vnd.apple.mpegurl')) {
-      video.src = url;
-    } else if (Hls.isSupported()) {
-      const hls = new Hls();
-      hls.loadSource(url);
-      hls.attachMedia(video);
-    } else {
-      video.innerText = 'HLS не поддерживается';
-    }
-  </script>
+    <video id="video" controls crossorigin="anonymous" style="width:100%;max-width:900px"></video>
+    
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1.4.0"></script>
+    <script>
+        const video = document.getElementById('video');
+        const url = 'https://primovocatus.duckdns.org/hls/video1/playlist.m3u8';
+        if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            video.src = url;
+        } else if (Hls.isSupported()) {
+            const hls = new Hls();
+            hls.loadSource(url);
+            hls.attachMedia(video);
+        } else {
+            video.textContent = 'HLS не поддерживается';
+        }
+    </script>
 </body>
 </html>
